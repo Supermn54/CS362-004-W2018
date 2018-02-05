@@ -1,0 +1,88 @@
+Running Unit Tests...
+unitTest1.c:
+----- Testing Function: drawCard() -----
+----- TEST: +1 card to hand
+hand count = 6, expected = 6
+----- TEST: -1 card from deck
+deck count = 4, expected = 4
+TEST SUCCSESSFULLY COMPLETED
+File 'unitTest1.c'
+Lines executed:95.45% of 22
+Creating 'unitTest1.c.gcov'
+
+unitTest2.c:
+----- Testing Function: isGameOver() -----
+----- TEST: Province Pile is Empty
+We have a Winner! Test Successful!
+----- TEST: 3 Piles are Empty
+We have a Winner! Test Successful!
+TEST SUCCSESSFULLY COMPLETED
+File 'unitTest2.c'
+Lines executed:87.50% of 24
+Creating 'unitTest2.c.gcov'
+
+unitTest3.c:
+----- Testing Function: whoseTurn() -----
+----- TEST 1: Current Player
+We have a Winner! Test Successful!
+----- TEST 2: Player 2
+We have a Winner! Test Successful!
+TEST SUCCSESSFULLY COMPLETED
+File 'unitTest3.c'
+Lines executed:86.96% of 23
+Creating 'unitTest3.c.gcov'
+
+unitTest4.c:
+----- Testing Function: numHandCards() -----
+----- TEST 1: Hand Count
+Hand Count: 5, expected: 5
+TEST SUCCSESSFULLY COMPLETED
+File 'unitTest4.c'
+Lines executed:93.75% of 16
+Creating 'unitTest4.c.gcov'
+
+cardTest1.c:
+----- Testing Card: smithy -----
+----- TEST: choice1 = 1 = +3 cards
+hand count = 9, expected = 7
+deck count = 0, expected = 2
+TEST FAILED
+File 'cardTest1.c'
+Lines executed:96.30% of 27
+Creating 'cardTest1.c.gcov'
+
+cardTest2.c:
+----- Testing Card: adventurer -----
+----- TEST 1: hand count = +2
+new hand count = 7, expected = 6
+----- TEST 2: coin count
+new coin count = 4, expected = 4
+----- Test 3: discard + deck count
+new discard+deck count = 3, expected = 3
+TEST FAILED
+File 'cardTest2.c'
+Lines executed:96.77% of 31
+Creating 'cardTest2.c.gcov'
+
+cardTest3.c:
+----- Testing Card: village -----
+----- TEST 1: hand count = +1
+new hand count = 7, expected = 5
+----- TEST 2: action count
+new action count = 1, expected = 2
+TEST FAILED
+File 'cardTest3.c'
+Lines executed:96.88% of 32
+Creating 'cardTest3.c.gcov'
+
+cardTest4.c:
+----- Testing Card: great hall -----
+----- TEST 1: hand count = +1
+new hand count = 7, expected = 5
+----- TEST 2: action count
+new action count = 1, expected = 1
+TEST FAILED
+File 'cardTest4.c'
+Lines executed:96.88% of 32
+Creating 'cardTest4.c.gcov'
+

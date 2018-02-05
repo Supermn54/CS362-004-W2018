@@ -1,0 +1,94 @@
+        -:    0:Source:cardTest2.c
+        -:    0:Graph:cardTest2.gcno
+        -:    0:Data:cardTest2.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:/***************************
+        -:    2: * unit test for Adventurer
+        -:    3: * ************************/
+        -:    4:
+        -:    5:#include "dominion.h"
+        -:    6:#include "dominion_helpers.h"
+        -:    7:#include <string.h>
+        -:    8:#include <stdio.h>
+        -:    9:#include <assert.h>
+        -:   10:#include "rngs.h"
+        -:   11:#include <stdlib.h>
+        -:   12:
+        -:   13:
+        -:   14:#define TESTCARD "adventurer"
+        -:   15:
+        1:   16:int main() {
+        -:   17:
+        -:   18:   //initialize variables
+        1:   19:   int numPlayers = 2;
+        1:   20:   int seed = 10;
+        1:   21:   int handpos = 0, choice1 = 0, choice2 = 0, choice3 = 0, bonus = 0;
+        1:   22:   int newCards = 0;
+        1:   23:   int discard = 1;
+        1:   24:   int thisPlayer = 0;
+        1:   25:   int testH1 = 0, testH2 = 0, testC1 = 0, testC2 = 0, testD1 = 0, testD2 = 0;
+        -:   26:
+        -:   27:   //initialize struct gamstate
+        -:   28:   struct gameState G, testG;
+        -:   29:
+        -:   30:   //initialize kingdom cards
+        1:   31:   int k[10] = {adventurer, embargo, village, minion, mine, cutpurse, sea_hag, tribute, smithy, council_room};
+        -:   32:
+        -:   33:
+        -:   34:   //initialize game state and player cards
+        1:   35:   initializeGame(numPlayers, k, seed, &G);
+        -:   36:   
+        1:   37:   printf("----- Testing Card: %s -----\n", TESTCARD);
+        -:   38:
+        -:   39:   //Test 1: hand count
+        -:   40:
+        1:   41:   printf("----- TEST 1: hand count = +2\n");
+        -:   42:
+        -:   43:   //copy game states for test case
+        1:   44:   memcpy(&testG, &G, sizeof(struct gameState));
+        1:   45:   choice1 = 1;
+        1:   46:   cardEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
+        1:   47:   newCards = 2;
+        1:   48:   testH1 = testG.handCount[thisPlayer];
+        1:   49:   testH2 = G.handCount[thisPlayer] + newCards - discard;
+        -:   50:
+        -:   51:   //print results in test case to confirm hand count
+        1:   52:   printf("new hand count = %d, expected = %d\n", testH1, testH2);
+        -:   53:
+        -:   54:   //Test 2: coin count
+        1:   55:   printf("----- TEST 2: coin count\n");
+        -:   56:
+        -:   57:
+        1:   58:   testC1 = testG.coins;
+        1:   59:   testC2 = G.coins;;
+        -:   60:
+        -:   61:   //print results in test case to confirm coin count
+        1:   62:   printf("new coin count = %d, expected = %d\n", testC1, testC2);
+        -:   63:
+        -:   64:   //Test 3: discard + deck count
+        1:   65:   printf("----- Test 3: discard + deck count\n");
+        -:   66:
+        1:   67:   testD1 = testG.discardCount[thisPlayer] + testG.deckCount[thisPlayer];
+        1:   68:   testD2 = G.discardCount[thisPlayer] + G.deckCount[thisPlayer] - newCards;
+        -:   69:
+        -:   70:   //print results in test to confirm discard + deck count
+        1:   71:   printf("new discard+deck count = %d, expected = %d\n", testD1, testD2);
+        -:   72:
+        -:   73:
+        -:   74:
+        1:   75:   if(testH1 == testH2 && testC1 == testC2 && testD1 == testD2){
+    #####:   76:	printf("TEST SUCCSESFULLY COMPLETED\n");
+        -:   77:   }
+        -:   78:   else{
+        1:   79:   	printf("TEST FAILED\n");
+        -:   80:   }
+        -:   81:
+        -:   82:
+        -:   83:   
+        -:   84:   
+        1:   85:   return 0;
+        -:   86:
+        -:   87:}
+        -:   88:
+        -:   89:

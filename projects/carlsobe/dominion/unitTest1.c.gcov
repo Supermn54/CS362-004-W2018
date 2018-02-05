@@ -1,0 +1,74 @@
+        -:    0:Source:unitTest1.c
+        -:    0:Graph:unitTest1.gcno
+        -:    0:Data:unitTest1.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:/***************************
+        -:    2: * unit test for drawCard()
+        -:    3: * ************************/
+        -:    4:
+        -:    5:#include "dominion.h"
+        -:    6:#include "dominion_helpers.h"
+        -:    7:#include <string.h>
+        -:    8:#include <stdio.h>
+        -:    9:#include <assert.h>
+        -:   10:#include "rngs.h"
+        -:   11:#include <stdlib.h>
+        -:   12:
+        -:   13:
+        -:   14:#define TESTCARD "drawCard()"
+        -:   15:
+        1:   16:int main() {
+        -:   17:
+        -:   18:   //initialize variables
+        1:   19:   int numPlayers = 2;
+        1:   20:   int seed = 1000;
+        1:   21:   int thisPlayer = 0;
+        1:   22:   int testH1 = 0, testH2 = 0, testD1 = 0, testD2 = 0;
+        -:   23:
+        -:   24:   //initialize struct gamstate
+        -:   25:   struct gameState G, testG;
+        -:   26:
+        -:   27:   //initialize kingdom cards
+        1:   28:   int k[10] = {adventurer, embargo, village, minion, mine, cutpurse, sea_hag, tribute, smithy, council_room};
+        -:   29:
+        -:   30:
+        -:   31:   //initialize game state and player cards
+        1:   32:   initializeGame(numPlayers, k, seed, &G);
+        -:   33:   
+        1:   34:   printf("----- Testing Function: %s -----\n", TESTCARD);
+        -:   35:
+        -:   36:   //Test 1: +1 card
+        1:   37:   printf("----- TEST: +1 card to hand\n");
+        -:   38:
+        -:   39:   //copy game state for test case
+        1:   40:   memcpy(&testG, &G, sizeof(struct gameState));
+        1:   41:   drawCard(thisPlayer, &testG);
+        1:   42:   testH1 = testG.handCount[thisPlayer];
+        1:   43:   testH2 = G.handCount[thisPlayer] + 1;
+        -:   44:   
+        -:   45:   //print results in test case to confirm hand count
+        1:   46:   printf("hand count = %d, expected = %d\n", testH1, testH2);
+        -:   47:
+        -:   48:   //Test 2: -1 deck
+        1:   49:   printf("----- TEST: -1 card from deck\n");
+        -:   50:
+        1:   51:   testD1 = testG.deckCount[thisPlayer];
+        1:   52:   testD2 = G.deckCount[thisPlayer] - 1;
+        -:   53:   
+        -:   54:   //print results in test case to confirm deck count
+        1:   55:   printf("deck count = %d, expected = %d\n", testD1, testD2);
+        -:   56:
+        -:   57:
+        1:   58:   if(testH1 == testH2 && testD1 == testD2){
+        1:   59:	printf("TEST SUCCSESSFULLY COMPLETED\n");
+        -:   60:   }
+        -:   61:   else{
+    #####:   62:   	printf("TEST FAILED\n");
+        -:   63:   }
+        -:   64:
+        1:   65:   return 0;
+        -:   66:
+        -:   67:}
+        -:   68:
+        -:   69:

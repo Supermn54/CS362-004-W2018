@@ -1,0 +1,61 @@
+        -:    0:Source:unitTest4.c
+        -:    0:Graph:unitTest4.gcno
+        -:    0:Data:unitTest4.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:/********************************
+        -:    2: * unit test for numHandCards()
+        -:    3: * *****************************/
+        -:    4:
+        -:    5:#include "dominion.h"
+        -:    6:#include "dominion_helpers.h"
+        -:    7:#include <string.h>
+        -:    8:#include <stdio.h>
+        -:    9:#include <assert.h>
+        -:   10:#include "rngs.h"
+        -:   11:#include <stdlib.h>
+        -:   12:
+        -:   13:
+        -:   14:#define TESTCARD "numHandCards()"
+        -:   15:
+        1:   16:int main() {
+        -:   17:
+        -:   18:   //initialize variables
+        1:   19:   int numPlayers = 2;
+        1:   20:   int seed = 1000;
+        1:   21:   int currentPlayer = 0;
+        -:   22:   //initialize struct gamstate
+        -:   23:   struct gameState G, testG;
+        -:   24:
+        -:   25:   //initialize kingdom cards
+        1:   26:   int k[10] = {adventurer, embargo, village, minion, mine, cutpurse, sea_hag, tribute, smithy, council_room};
+        -:   27:
+        -:   28:
+        -:   29:   //initialize game state and player cards
+        1:   30:   initializeGame(numPlayers, k, seed, &G);
+        -:   31:   
+        1:   32:   printf("----- Testing Function: %s -----\n", TESTCARD);
+        -:   33:
+        -:   34:   //Test 1: Test Hand Count
+        1:   35:   printf("----- TEST 1: Hand Count\n");
+        -:   36:
+        -:   37:   //copy game state for test case
+        1:   38:   memcpy(&testG, &G, sizeof(struct gameState));
+        1:   39:   int newCount = numHandCards(&testG);
+        1:   40:   int oldCount = G.handCount[currentPlayer];
+        -:   41:
+        -:   42:   //print results in test case to confirm current player
+        1:   43:   printf("Hand Count: %d, expected: %d\n", newCount, oldCount);
+        -:   44:
+        1:   45:   if(newCount == oldCount){
+        1:   46:	printf("TEST SUCCSESSFULLY COMPLETED\n");
+        -:   47:   }
+        -:   48:   else{
+    #####:   49:   	printf("TEST FAILED\n");
+        -:   50:   }
+        -:   51:
+        1:   52:   return 0;
+        -:   53:
+        -:   54:}
+        -:   55:
+        -:   56:

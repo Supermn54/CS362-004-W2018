@@ -5,6 +5,13 @@
 #include <math.h>
 #include <stdlib.h>
 
+
+int smithyRef(int currentPlayer, struct gameState *state, int handPos);
+int adventurerRef(int currentPlayer, struct gameState *state);
+int villageRef(int currentPlayer, struct gameState *state, int handPos);
+int embargoRef(int currentPlayer, struct gameState *state, int handPos, int choice1);
+int stewardRef(int currentPlayer, struct gameState *state, int choice1, int choice2, int choice3, int handPos);
+
 int compare(const void* a, const void* b) {
   if (*(int*)a > *(int*)b)
     return 1;
@@ -813,7 +820,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       break;
 		
     case village:
-	villageRef(currentPlayer, state);
+	villageRef(currentPlayer, state, handPos);
 	break;
 
     case baron:
