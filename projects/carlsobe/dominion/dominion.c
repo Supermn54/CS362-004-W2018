@@ -1245,7 +1245,7 @@ int smithyRef(int currentPlayer, struct gameState *state, int handPos)
 {
    int i;
    //+3 cards...BUG: +5 cards
-   for(i=0; i<5; i++)
+   for(i=0; i<3; i++)
    {
       drawCard(currentPlayer, state);
    }

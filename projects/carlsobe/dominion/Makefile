@@ -35,5 +35,12 @@ player: player.c interface.o
 
 all: playdom player testDrawCard testBuyCard badTestDrawCard
 
+randomtestcard1.out:
+	echo "randomtestcard1.c:" >> randomtestcard1.out
+	gcc -o randomtestcard1 randomtestcard1.c -g dominion.c rngs.c $(CFLAGS)
+	randomtestcard1 >> randomtestcard1.out
+	gcov -abcfu dominion.c >> randomtestcard1.out 
+
 clean:
 	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
+	rm -f randomtestcard1
