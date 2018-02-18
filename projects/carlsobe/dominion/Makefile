@@ -41,6 +41,18 @@ randomtestcard1.out:
 	randomtestcard1 >> randomtestcard1.out
 	gcov -abcfu dominion.c >> randomtestcard1.out 
 
+randomtestcard2.out:
+	echo "randomtestcard2.c:" >> randomtestcard2.out
+	gcc -o randomtestcard2 randomtestcard2.c -g dominion.c rngs.c $(CFLAGS)
+	randomtestcard2 >> randomtestcard2.out
+	gcov -abcfu dominion.c >> randomtestcard2.out 
+
+randomtestadventurer.out:
+	echo "randomtestadventurer.c:" >> randomtestadventurer.out
+	gcc -o randomtestadventurer randomtestadventurer.c -g dominion.c rngs.c $(CFLAGS)
+	randomtestadventurer >> randomtestadventurer.out
+	gcov -abcfu dominion.c >> randomtestadventurer.out 
+
 clean:
 	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
-	rm -f randomtestcard1
+	rm -f randomtestcard1 randomtestcard2 randomtestadventurer

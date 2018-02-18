@@ -1,7 +1,7 @@
-randomtestcard1.c:
------ Testing Card: smithy -----
+randomtestcard2.c:
+----- Testing Card: great_hall -----
 ----- RANDOM TEST -----
-The smithy card failed 8 times and passed 992 times out of a total of 1000 tests.
+The great_hall card failed 1000 times and passed 0 times out of a total of 1000 tests.
 Function 'updateCoins'
 Lines executed:81.82% of 11
 No branches
@@ -18,7 +18,7 @@ No branches
 No calls
 
 Function 'smithyRef'
-Lines executed:100.00% of 5
+Lines executed:0.00% of 5
 No branches
 No calls
 
@@ -43,7 +43,7 @@ No branches
 No calls
 
 Function 'cardEffect'
-Lines executed:4.41% of 204
+Lines executed:4.90% of 204
 No branches
 No calls
 
@@ -53,7 +53,7 @@ No branches
 No calls
 
 Function 'drawCard'
-Lines executed:77.27% of 22
+Lines executed:36.36% of 22
 No branches
 No calls
 
@@ -113,7 +113,7 @@ No branches
 No calls
 
 Function 'shuffle'
-Lines executed:100.00% of 16
+Lines executed:93.75% of 16
 No branches
 No calls
 
@@ -138,9 +138,9 @@ No branches
 No calls
 
 File 'dominion.c'
-Lines executed:23.26% of 559
-Branches executed:24.04% of 416
-Taken at least once:15.87% of 416
-Calls executed:12.90% of 93
+Lines executed:20.93% of 559
+Branches executed:22.60% of 416
+Taken at least once:14.42% of 416
+Calls executed:10.75% of 93
 Creating 'dominion.c.gcov'
 
