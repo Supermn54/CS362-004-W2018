@@ -1,0 +1,125 @@
+
+/*********************************************
+* Template from Noverse Bug Reporting Template
+*********************************************/
+
+========================== Bug Report 1 =============================
+Title: Hand Count not incrementing accurately for Smithy Card function
+
+Class: "Serious Bug"
+
+Date:	3/4/2018 
+Reported By:   Ben Carlson 
+Email:	carlsobe@oregonstate.edu
+
+
+Product: Dominion               Version: CS362-400-W2018
+Platform: OSU Flip Engr Server
+
+Is it reproducible: Yes
+
+Description
+===========
+Unit test cardTest1 and random test randomtest1 resulted failures for the number within the hand count. The number is conistently 1 less than the expected result. 
+
+
+Steps to Produce/Reproduce
+--------------------------
+1) Run make testresults.out
+2) Review cardTest1 and randomtest1 results
+
+
+Expected Results
+----------------
+The expected test result was 7 cards.
+
+
+Actual Results
+--------------
+From the testresults.out file:
+
+  3 ----- Testing Card: smithy -----
+  4 ----- TEST: choice1 = 1 = +3 cards
+  5 hand count = 6, expected = 7
+  6 deck count = 3, expected = 2
+  7 TEST FAILED
+----- Testing Card: smithy -----
+ 14 ----- RANDOM TEST -----
+ 15 The smithy card failed 1000 times and passed 0 times out of a total of 1000 tests.
+
+
+Workarounds
+-----------
+None
+
+
+Attachments
+-----------
+See output from testresults.out
+
+
+Other Information
+-----------------
+None
+
+========================== Bug Report 2 =============================
+Title: Hand Count not incrementing accuratly for Adventurer Card function
+
+Class: "Serious Bug"
+
+Date:	3/4/2018 
+Reported By:   Ben Carlson 
+Email:	carlsobe@oregonstate.edu
+
+
+Product: Dominion               Version: CS362-400-W2018
+Platform: OSU Flip Engr Server
+
+Is it reproducible: Yes
+
+Description
+===========
+Unit test cardTest2 and random test randomtestadventurer resulted in failures for the number within the hand count. The number is conistently 2 more than the expected result. 
+
+
+Steps to Produce/Reproduce
+--------------------------
+1) Run make testresults.out
+2) Review cardTest2 and randomtestadventurer results
+
+
+Expected Results
+----------------
+The expected test result was 6.
+
+
+Actual Results
+--------------
+From the testresults.out file:
+
+----- Testing Card: adventurer -----
+160 ----- TEST 1: hand count = +2
+161 new hand count = 8, expected = 6
+162 ----- TEST 2: coin count
+163 new coin count = 4, expected = 4
+164 ----- Test 3: discard + deck count
+165 new discard+deck count = 2, expected = 3
+166 TEST FAILED
+
+----- Testing Card: adventurer -----
+173 ----- RANDOM TEST -----
+174 The adventurer card failed 995 times and passed 5 times out of a total of 1000 tests.
+
+Workarounds
+-----------
+None
+
+
+Attachments
+-----------
+See output from testresults.out
+
+
+Other Information
+-----------------
+None

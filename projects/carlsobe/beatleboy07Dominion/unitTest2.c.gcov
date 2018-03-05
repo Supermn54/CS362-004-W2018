@@ -1,0 +1,81 @@
+        -:    0:Source:unitTest2.c
+        -:    0:Graph:unitTest2.gcno
+        -:    0:Data:unitTest2.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:/***************************
+        -:    2: * unit test for isGameOver()
+        -:    3: * ************************/
+        -:    4:
+        -:    5:#include "dominion.h"
+        -:    6:#include "dominion_helpers.h"
+        -:    7:#include <string.h>
+        -:    8:#include <stdio.h>
+        -:    9:#include <assert.h>
+        -:   10:#include "rngs.h"
+        -:   11:#include <stdlib.h>
+        -:   12:
+        -:   13:
+        -:   14:#define TESTCARD "isGameOver()"
+        -:   15:
+        1:   16:int main() {
+        -:   17:
+        -:   18:   //initialize variables
+        1:   19:   int numPlayers = 2;
+        1:   20:   int seed = 1000;
+        -:   21:
+        -:   22:   //initialize struct gamstate
+        -:   23:   struct gameState G, testG, testG2;
+        -:   24:
+        -:   25:   //initialize kingdom cards
+        1:   26:   int k[10] = {adventurer, embargo, village, minion, mine, cutpurse, sea_hag, tribute, smithy, council_room};
+        -:   27:
+        -:   28:
+        -:   29:   //initialize game state and player cards
+        1:   30:   initializeGame(numPlayers, k, seed, &G);
+        -:   31:   
+        1:   32:   printf("----- Testing Function: %s -----\n", TESTCARD);
+        -:   33:
+        -:   34:   //Test 1: Winner when Province Pile is Empty
+        1:   35:   printf("----- TEST: Province Pile is Empty\n");
+        -:   36:
+        -:   37:   //copy game state for test case
+        1:   38:   memcpy(&testG, &G, sizeof(struct gameState));
+        1:   39:   testG.supplyCount[province] = 0;
+        -:   40:  
+        -:   41:   //print results in test case to confirm winner when province is 0
+        1:   42:   if(isGameOver(&testG)){
+        1:   43:	 printf("We have a Winner! Test Successful!\n");
+        -:   44:   }
+        -:   45:   else{
+    #####:   46:   	printf("We don't have a Winner. Test Failed!\n");
+        -:   47:   }
+        -:   48:
+        -:   49:   //Test 2: Winner when 3 piles are Empty
+        1:   50:   printf("----- TEST: 3 Piles are Empty\n");
+        -:   51:
+        1:   52:   memcpy(&testG2, &G, sizeof(struct gameState));
+        1:   53:   testG2.supplyCount[0] = 0;
+        1:   54:   testG2.supplyCount[1] = 0;
+        1:   55:   testG2.supplyCount[2] = 0;
+        -:   56:   
+        -:   57:   //print results in test case to confirm deck count
+        1:   58:   if(isGameOver(&testG2)){
+        1:   59:	 printf("We have a Winner! Test Successful!\n");
+        -:   60:   }
+        -:   61:   else{
+    #####:   62:   	printf("We don't have a Winner. Test Failed!\n");
+        -:   63:   }
+        -:   64:
+        1:   65:   if(isGameOver(&testG) && isGameOver(&testG2)){
+        1:   66:	printf("TEST SUCCSESSFULLY COMPLETED\n");
+        -:   67:   }
+        -:   68:   else{
+    #####:   69:   	printf("TEST FAILED\n");
+        -:   70:   }
+        -:   71:
+        1:   72:   return 0;
+        -:   73:
+        -:   74:}
+        -:   75:
+        -:   76:

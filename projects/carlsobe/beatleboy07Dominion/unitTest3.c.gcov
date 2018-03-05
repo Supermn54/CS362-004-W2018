@@ -1,0 +1,81 @@
+        -:    0:Source:unitTest3.c
+        -:    0:Graph:unitTest3.gcno
+        -:    0:Data:unitTest3.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:/********************************
+        -:    2: * unit test for whoseTurn()
+        -:    3: * *****************************/
+        -:    4:
+        -:    5:#include "dominion.h"
+        -:    6:#include "dominion_helpers.h"
+        -:    7:#include <string.h>
+        -:    8:#include <stdio.h>
+        -:    9:#include <assert.h>
+        -:   10:#include "rngs.h"
+        -:   11:#include <stdlib.h>
+        -:   12:
+        -:   13:
+        -:   14:#define TESTCARD "whoseTurn()"
+        -:   15:
+        1:   16:int main() {
+        -:   17:
+        -:   18:   //initialize variables
+        1:   19:   int numPlayers = 2;
+        1:   20:   int seed = 1000;
+        1:   21:   int currentPlayer = 0;
+        -:   22:
+        -:   23:   //initialize struct gamstate
+        -:   24:   struct gameState G, testG, testG2;
+        -:   25:
+        -:   26:   //initialize kingdom cards
+        1:   27:   int k[10] = {adventurer, embargo, village, minion, mine, cutpurse, sea_hag, tribute, smithy, council_room};
+        -:   28:
+        -:   29:
+        -:   30:   //initialize game state and player cards
+        1:   31:   initializeGame(numPlayers, k, seed, &G);
+        -:   32:   
+        1:   33:   printf("----- Testing Function: %s -----\n", TESTCARD);
+        -:   34:
+        -:   35:   //Test 1: Test Current Player
+        1:   36:   printf("----- TEST 1: Current Player\n");
+        -:   37:
+        -:   38:   //copy game state for test case
+        1:   39:   memcpy(&testG, &G, sizeof(struct gameState));
+        1:   40:   testG.whoseTurn = currentPlayer;
+        -:   41:
+        -:   42:   //print results in test case to confirm current player
+        1:   43:   if(whoseTurn(&testG) == 0){
+        1:   44:     printf("We have a Winner! Test Successful!\n");
+        -:   45:   }
+        -:   46:   else{
+    #####:   47:     printf("TEST FAILED\n");
+        -:   48:   } 
+        -:   49:
+        -:   50:   //Test 2: Test Player 2
+        1:   51:   printf("----- TEST 2: Player 2\n");
+        -:   52:
+        -:   53:   //copy game state for test case
+        1:   54:   memcpy(&testG2, &G, sizeof(struct gameState));
+        1:   55:   testG2.whoseTurn = currentPlayer + 1;
+        -:   56:
+        -:   57:   //print results in test case to confirm current player
+        1:   58:   if(whoseTurn(&testG2) == 1){
+        1:   59:     printf("We have a Winner! Test Successful!\n");
+        -:   60:   }
+        -:   61:   else{
+    #####:   62:     printf("TEST FAILED\n");
+        -:   63:   } 
+        -:   64:
+        1:   65:   if(whoseTurn(&testG)==0 && whoseTurn(&testG2)==1){
+        1:   66:	printf("TEST SUCCSESSFULLY COMPLETED\n");
+        -:   67:   }
+        -:   68:   else{
+    #####:   69:   	printf("TEST FAILED\n");
+        -:   70:   }
+        -:   71:
+        1:   72:   return 0;
+        -:   73:
+        -:   74:}
+        -:   75:
+        -:   76:
